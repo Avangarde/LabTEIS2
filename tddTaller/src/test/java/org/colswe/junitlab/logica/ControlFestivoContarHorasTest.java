@@ -16,9 +16,9 @@ import junit.framework.TestCase;
  * @author juanmanuelmartinezromero
  *
  */
-public class ControlContarDiasTest extends TestCase {
+public class ControlFestivoContarHorasTest extends TestCase {
 
-	public ControlContarDiasTest(String name) {
+	public ControlFestivoContarHorasTest(String name) {
 		super(name);
 	}
 	
