@@ -61,9 +61,13 @@ public class ControlFestivoContarHorasTest extends TestCase {
 		Festivo sabadoFestivoLab = produceFestivo(2012, Calendar.JANUARY, 7, true);
 		festivos.add(sabadoFestivoLab);
 
-		//Dia Sábado Festivo No Laborable
+		//Día Sábado Festivo No Laborable
 		Festivo sabadoFestivoNoLab = produceFestivo(2012, Calendar.JANUARY, 28, false);
 		festivos.add(sabadoFestivoNoLab);
+		
+		//Día Domingo Festivo Laborable
+		Festivo domingoFestivoLab = produceFestivo(2012, Calendar.JANUARY, 1, false);
+		festivos.add(domingoFestivoLab);
 		
 		ControlFestivo cf = new ControlFestivo();
 		cf.sistema.setEntidades(festivos);
@@ -122,7 +126,7 @@ public class ControlFestivoContarHorasTest extends TestCase {
 		hasta = desde;
 		assertEquals(new Integer(0), cf.contarHoras(desde.getTime(), hasta.getTime()));
 		
-		//Día Domingo Laborable
+		//Día Domingo Festivo Laborable
 		desde.set(Calendar.YEAR, 2012);
 		desde.set(Calendar.MONTH, Calendar.JANUARY);
 		desde.set(Calendar.DATE, 1);
