@@ -133,11 +133,11 @@ public class ControlFestivoContarHorasTest extends TestCase {
 	public void testFuncionalidadEsperada() {
 		List<Festivo> festivos = new ArrayList<Festivo>();
 		//Festivos No Laborables
-		Festivo festivoNoLab1 = produceFestivo(Calendar.APRIL, 2, false);
-		Festivo festivoNoLab2 = produceFestivo(Calendar.APRIL, 3, false);
-		Festivo festivoNoLab3 = produceFestivo(Calendar.APRIL, 29, false);
-		Festivo festivoNoLab4 = produceFestivo(Calendar.APRIL, 30, false);
-		Festivo festivoNoLab5 = produceFestivo(Calendar.MAY, 1, false);
+		Festivo festivoNoLab1 = produceFestivo(2013, Calendar.APRIL, 2, false);
+		Festivo festivoNoLab2 = produceFestivo(2013, Calendar.APRIL, 3, false);
+		Festivo festivoNoLab3 = produceFestivo(2013, Calendar.APRIL, 29, false);
+		Festivo festivoNoLab4 = produceFestivo(2013, Calendar.APRIL, 30, false);
+		Festivo festivoNoLab5 = produceFestivo(2013, Calendar.MAY, 1, false);
 		festivos.add(festivoNoLab1);
 		festivos.add(festivoNoLab2);
 		festivos.add(festivoNoLab3);
@@ -145,12 +145,12 @@ public class ControlFestivoContarHorasTest extends TestCase {
 		festivos.add(festivoNoLab5);
 		
 		//Festivos Laborables
-		Festivo festivoLab1 = produceFestivo(Calendar.APRIL, 9, true);
-		Festivo festivoLab2 = produceFestivo(Calendar.APRIL, 10, true);
-		Festivo festivoLab3 = produceFestivo(Calendar.APRIL, 16, true);
-		Festivo festivoLab4 = produceFestivo(Calendar.APRIL, 17, true);
-		Festivo festivoLab5 = produceFestivo(Calendar.APRIL, 18, true);
-		Festivo festivoLab6 = produceFestivo(Calendar.APRIL, 19, true);
+		Festivo festivoLab1 = produceFestivo(2013, Calendar.APRIL, 9, true);
+		Festivo festivoLab2 = produceFestivo(2013, Calendar.APRIL, 10, true);
+		Festivo festivoLab3 = produceFestivo(2013, Calendar.APRIL, 16, true);
+		Festivo festivoLab4 = produceFestivo(2013, Calendar.APRIL, 17, true);
+		Festivo festivoLab5 = produceFestivo(2013, Calendar.APRIL, 18, true);
+		Festivo festivoLab6 = produceFestivo(2013, Calendar.APRIL, 19, true);
 		festivos.add(festivoLab1);
 		festivos.add(festivoLab2);
 		festivos.add(festivoLab3);
@@ -159,16 +159,16 @@ public class ControlFestivoContarHorasTest extends TestCase {
 		festivos.add(festivoLab6);
 		
 		//Sabados Festivos No Laborables
-		Festivo festivoSabadoNoLab = produceFestivo(Calendar.APRIL, 13, false);
+		Festivo festivoSabadoNoLab = produceFestivo(2013, Calendar.APRIL, 13, false);
 		festivos.add(festivoSabadoNoLab);
 		
 		//Sabados Festivos Laborables
-		Festivo festivoSabadoLab = produceFestivo(Calendar.APRIL, 6, true);
+		Festivo festivoSabadoLab = produceFestivo(2013, Calendar.APRIL, 6, true);
 		festivos.add(festivoSabadoLab);
 		
 		//Domingos Festivos Laborables
-		Festivo festivoDomingoLab1 = produceFestivo(Calendar.APRIL, 7, true);
-		Festivo festivoDomingoLab2 = produceFestivo(Calendar.APRIL, 14, true);
+		Festivo festivoDomingoLab1 = produceFestivo(2013, Calendar.APRIL, 7, true);
+		Festivo festivoDomingoLab2 = produceFestivo(2013, Calendar.APRIL, 14, true);
 		festivos.add(festivoDomingoLab1);
 		festivos.add(festivoDomingoLab2);
 
@@ -266,11 +266,11 @@ public class ControlFestivoContarHorasTest extends TestCase {
 		
 	}
 	
-	private Festivo produceFestivo(int month, int date, boolean laborable) {
+	private Festivo produceFestivo(int year, int month, int date, boolean laborable) {
 		Festivo festivo = new Festivo();
 		Calendar fecha = Calendar.getInstance();
 		fecha.setTimeInMillis(0);
-		fecha.set(Calendar.YEAR, 2012);
+		fecha.set(Calendar.YEAR, year);
 		fecha.set(Calendar.MONTH, month);
 		fecha.set(Calendar.DATE, date);
 		festivo.setFecha(fecha.getTime());
