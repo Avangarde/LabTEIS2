@@ -132,10 +132,10 @@ public class ControlFestivoContarHorasTest extends TestCase {
 		//Fechas limites festivos laborables
 		desde.set(Calendar.YEAR, 2013);
 		desde.set(Calendar.MONTH, Calendar.APRIL);
-		desde.set(Calendar.DATE, 1);
+		desde.set(Calendar.DATE, 9);
 		hasta.set(Calendar.YEAR, 2013);
 		hasta.set(Calendar.MONTH, Calendar.APRIL);
-		hasta.set(Calendar.DATE, 4);
+		hasta.set(Calendar.DATE, 10);
 		assertEquals(new Integer(32), cf.contarHoras(desde.getTime(), hasta.getTime()));
 
 		//Rango que incluye un día sábado festivo laborable y un domingo festivo laborable
@@ -145,7 +145,7 @@ public class ControlFestivoContarHorasTest extends TestCase {
 		hasta.set(Calendar.YEAR, 2013);
 		hasta.set(Calendar.MONTH, Calendar.APRIL);
 		hasta.set(Calendar.DATE, 8);
-		assertEquals(new Integer(40), cf.contarHoras(desde.getTime(), hasta.getTime()));
+		assertEquals(new Integer(48), cf.contarHoras(desde.getTime(), hasta.getTime()));
 
 		//Rango que incluye un día sábado festivo no laborable y un domingo festivo laborable
 		desde.set(Calendar.YEAR, 2013);
@@ -154,7 +154,7 @@ public class ControlFestivoContarHorasTest extends TestCase {
 		hasta.set(Calendar.YEAR, 2013);
 		hasta.set(Calendar.MONTH, Calendar.APRIL);
 		hasta.set(Calendar.DATE, 15);
-		assertEquals(new Integer(24), cf.contarHoras(desde.getTime(), hasta.getTime()));
+		assertEquals(new Integer(32), cf.contarHoras(desde.getTime(), hasta.getTime()));
 		
 		//Rango con solo fechas festivas laborables
 		desde.set(Calendar.YEAR, 2013);
