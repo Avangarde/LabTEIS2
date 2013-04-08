@@ -36,7 +36,7 @@ public class ControlFestivo implements IControlFestivo {
 		if (desde==null || hasta==null){
 			return false;
 		}
-		return desde.before(hasta) || desde.equals(hasta);
+		return desde.before(hasta) ||  desde.equals(hasta);
 	}
 
 	/**
