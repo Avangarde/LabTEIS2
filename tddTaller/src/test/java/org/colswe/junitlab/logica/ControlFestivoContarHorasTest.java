@@ -5,6 +5,7 @@ package org.colswe.junitlab.logica;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.colswe.junitlab.logica.imp.ControlFestivo;
@@ -22,32 +23,33 @@ public class ControlFestivoContarHorasTest extends TestCase {
 		super(name);
 	}
 	
-//	public void testFechasInvalidas(){
-//		List<Festivo> festivos = new ArrayList<Festivo>();
-//		Festivo festivo = produceFestivo(Calendar.JANUARY, 4, false);
-//		Festivo festivo1 = produceFestivo(Calendar.JANUARY, 11, true);
-//		festivos.add(festivo);
-//		festivos.add(festivo1);
-//		
-//		ControlFestivo cf = new ControlFestivo();
-//		cf.sistema.setEntidades(festivos);
-//
-//		Calendar desde = Calendar.getInstance();
-//		Calendar hasta = Calendar.getInstance();
-//		desde = Calendar.getInstance();
-//		hasta = Calendar.getInstance();
-//		desde.setTimeInMillis(0);
-//		hasta.setTimeInMillis(0);
-//		desde.set(Calendar.YEAR, 292278994);
-//		hasta.set(Calendar.YEAR, 292278994);
-//		desde.set(Calendar.MONTH, 1);
-//		hasta.set(Calendar.MONTH, 1);
-//		desde.set(Calendar.DATE, 17);
-//		hasta.set(Calendar.DATE, 18);
-//		System.out.println(desde.get(hasta.DAY_OF_WEEK));
-//	}
+	public void testFechasInvalidas(){
+		ControlFestivo cf = new ControlFestivo();
+		
+		Date desdeNull = null;
+		Date hastaNull = null;
+		
+		Calendar desde = Calendar.getInstance();
+		Calendar hasta = Calendar.getInstance();
+		desde = Calendar.getInstance();
+		hasta = Calendar.getInstance();
+		desde.setTimeInMillis(0);
+		hasta.setTimeInMillis(0);
+		desde.set(Calendar.YEAR, 2013);
+		hasta.set(Calendar.YEAR, 2012);
+		
+		assertEquals(null, cf.contarHoras(desdeNull, hastaNull));
+		assertEquals(null, cf.contarHoras(desdeNull, hasta.getTime()));
+		assertEquals(null, cf.contarHoras(desde.getTime(), hastaNull));
+		assertEquals(null, cf.contarHoras(desde.getTime(), hasta.getTime()));
 
-	public void test1() {
+	}
+
+	public void testFechasIguales() {
+		
+	}
+	
+	public void testFuncionalidadEsperada() {
 		
 	}
 	
