@@ -46,72 +46,7 @@ public class ControlFestivoContarHorasTest extends TestCase {
 	}
 
 	public void testFechasIguales() {
-		ControlFestivo cf = new ControlFestivo();
-		
-		
-		Calendar desde = Calendar.getInstance();
-		Calendar hasta = Calendar.getInstance();
-		desde.getTimeInMillis();
-		hasta.getTimeInMillis();
-		
-		//Festivo no laborable
-		
-		Festivo festivo = produceFestivo(2013,Calendar.JANUARY, 4, false);
-		desde.setTimeInMillis(0);
-		desde.set(Calendar.DATE, 4);
-		hasta=desde;
-		
-		assertEquals(new Integer(0), cf.contarHoras(desde.getTime(), hasta.getTime()));
 
-		//Festivo laborable
-		Festivo festivo1 = produceFestivo(2013,Calendar.JANUARY, 8, true);
-		
-		desde.set(Calendar.DATE, 8);
-		hasta=desde;
-		
-		assertEquals(new Integer(16), cf.contarHoras(desde.getTime(), hasta.getTime()));
-
-		//Dia normal
-		desde.set(Calendar.DATE, 24);
-		hasta=desde;
-		
-		assertEquals(new Integer(8), cf.contarHoras(desde.getTime(), hasta.getTime()));
-
-		//Dia sábado
-		
-		desde.set(Calendar.DATE, 14);
-		hasta=desde;
-
-		assertEquals(new Integer(4), cf.contarHoras(desde.getTime(), hasta.getTime()));
-		//Dia domingo
-		
-		desde.set(Calendar.DATE, 22);
-		hasta=desde;
-
-		assertEquals(new Integer(0), cf.contarHoras(desde.getTime(), hasta.getTime()));
-		//Dia sábado festivo laborable
-		Festivo festivo3 = produceFestivo(2013,Calendar.JANUARY, 7, true);
-		
-		desde.set(Calendar.DATE, 7);
-		hasta=desde;
-
-		assertEquals(new Integer(16), cf.contarHoras(desde.getTime(), hasta.getTime()));
-		//Dia sabado festivo no laborable
-		Festivo festivo4 = produceFestivo(2013,Calendar.JANUARY, 28, false);
-		
-		desde.set(Calendar.DATE, 28);
-		hasta=desde;
-		
-		assertEquals(new Integer(0), cf.contarHoras(desde.getTime(), hasta.getTime()));
-
-		//Dia domingo laborable
-		Festivo festivo5 = produceFestivo(2013,Calendar.JANUARY, 1, true);
-		
-		desde.set(Calendar.DATE, 1);
-		hasta=desde;
-		
-		assertEquals(new Integer(16), cf.contarHoras(desde.getTime(), hasta.getTime()));
-		
 		List<Festivo> festivos = new ArrayList<Festivo>();
 		
 		//Festivo No Laborable
