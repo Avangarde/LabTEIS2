@@ -46,22 +46,23 @@ public class ControlFestivoContarHorasTest extends TestCase {
 	}
 
 	public void testFechasIguales() {
+		
 		List<Festivo> festivos = new ArrayList<Festivo>();
 		
 		//Festivo No Laborable
-		Festivo festivoNoLab = produceFestivo(Calendar.JANUARY, 4, false);
+		Festivo festivoNoLab = produceFestivo(2012, Calendar.JANUARY, 4, false);
 		festivos.add(festivoNoLab);
 		
 		//Festivo Laborable
-		Festivo festivoLab = produceFestivo(Calendar.JANUARY, 8, true);
+		Festivo festivoLab = produceFestivo(2012, Calendar.JANUARY, 8, true);
 		festivos.add(festivoLab);
 
 		//Día Sábado Festivo Laborable
-		Festivo sabadoFestivoLab = produceFestivo(Calendar.JANUARY, 7, true);
+		Festivo sabadoFestivoLab = produceFestivo(2012, Calendar.JANUARY, 7, true);
 		festivos.add(sabadoFestivoLab);
 
 		//Dia Sábado Festivo No Laborable
-		Festivo sabadoFestivoNoLab = produceFestivo(Calendar.JANUARY, 28, false);
+		Festivo sabadoFestivoNoLab = produceFestivo(2012, Calendar.JANUARY, 28, false);
 		festivos.add(sabadoFestivoNoLab);
 		
 		ControlFestivo cf = new ControlFestivo();
