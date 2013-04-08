@@ -62,7 +62,7 @@ public class ControlFestivoContarHorasTest extends TestCase {
 
 		//Dia Sábado Festivo No Laborable
 		Festivo sabadoFestivoNoLab = produceFestivo(Calendar.JANUARY, 28, false);
-		festivos.add(sabadoFestivoLab);
+		festivos.add(sabadoFestivoNoLab);
 		
 		ControlFestivo cf = new ControlFestivo();
 		cf.sistema.setEntidades(festivos);
