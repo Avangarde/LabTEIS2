@@ -46,26 +46,88 @@ public class ControlFestivoContarHorasTest extends TestCase {
 	}
 
 	public void testFechasIguales() {
+		List<Festivo> festivos = new ArrayList<Festivo>();
+		
+		//Festivo No Laborable
+		Festivo festivoNoLab = produceFestivo(Calendar.JANUARY, 4, false);
+		festivos.add(festivoNoLab);
+		
+		//Festivo Laborable
+		Festivo festivoLab = produceFestivo(Calendar.JANUARY, 8, true);
+		festivos.add(festivoLab);
+
+		//Día Sábado Festivo Laborable
+		Festivo sabadoFestivoLab = produceFestivo(Calendar.JANUARY, 7, true);
+		festivos.add(sabadoFestivoLab);
+
+		//Dia Sábado Festivo No Laborable
+		Festivo sabadoFestivoNoLab = produceFestivo(Calendar.JANUARY, 28, false);
+		festivos.add(sabadoFestivoLab);
+		
 		ControlFestivo cf = new ControlFestivo();
+		cf.sistema.setEntidades(festivos);
 		
 		Calendar desde = Calendar.getInstance();
 		Calendar hasta = Calendar.getInstance();
-		desde.getTimeInMillis();
-		desde.getTimeInMillis();
-		
-		//Festivo No Laborable
-		Festivo festivo = produceFestivo(Calendar.JANUARY, 4, false);
 		desde.setTimeInMillis(0);
+		desde.setTimeInMillis(0);
+		
+		//Festivo No Laborable	
+		desde.set(Calendar.YEAR, 2012);
+		desde.set(Calendar.MONTH, Calendar.JANUARY);
 		desde.set(Calendar.DATE, 4);
-		hasta = desde;	
+		hasta = desde;
 		assertEquals(new Integer(0), cf.contarHoras(desde.getTime(), hasta.getTime()));
 		
 		//Festivo Laborable
-		Festivo festivo1 = produceFestivo(Calendar.JANUARY, 8, true);
-		desde.setTimeInMillis(0);
+		desde.set(Calendar.YEAR, 2012);
+		desde.set(Calendar.MONTH, Calendar.JANUARY);
 		desde.set(Calendar.DATE, 8);
-		hasta = desde;	
+		hasta = desde;
 		assertEquals(new Integer(16), cf.contarHoras(desde.getTime(), hasta.getTime()));
+		
+		//Día Normal
+		desde.set(Calendar.YEAR, 2012);
+		desde.set(Calendar.MONTH, Calendar.JANUARY);
+		desde.set(Calendar.DATE, 24);
+		hasta = desde;
+		assertEquals(new Integer(8), cf.contarHoras(desde.getTime(), hasta.getTime()));
+		
+		//Día Sábado
+		desde.set(Calendar.YEAR, 2012);
+		desde.set(Calendar.MONTH, Calendar.JANUARY);
+		desde.set(Calendar.DATE, 14);
+		hasta = desde;
+		assertEquals(new Integer(4), cf.contarHoras(desde.getTime(), hasta.getTime()));
+		
+		//Día Domingo
+		desde.set(Calendar.YEAR, 2012);
+		desde.set(Calendar.MONTH, Calendar.JANUARY);
+		desde.set(Calendar.DATE, 22);
+		hasta = desde;
+		assertEquals(new Integer(0), cf.contarHoras(desde.getTime(), hasta.getTime()));
+		
+		//Día Sábado Festivo Laborable
+		desde.set(Calendar.YEAR, 2012);
+		desde.set(Calendar.MONTH, Calendar.JANUARY);
+		desde.set(Calendar.DATE, 7);
+		hasta = desde;
+		assertEquals(new Integer(16), cf.contarHoras(desde.getTime(), hasta.getTime()));
+		
+		//Dia Sábado Festivo No Laborable
+		desde.set(Calendar.YEAR, 2012);
+		desde.set(Calendar.MONTH, Calendar.JANUARY);
+		desde.set(Calendar.DATE, 28);
+		hasta = desde;
+		assertEquals(new Integer(0), cf.contarHoras(desde.getTime(), hasta.getTime()));
+		
+		//Día Domingo Laborable
+		desde.set(Calendar.YEAR, 2012);
+		desde.set(Calendar.MONTH, Calendar.JANUARY);
+		desde.set(Calendar.DATE, 1);
+		hasta = desde;
+		assertEquals(new Integer(16), cf.contarHoras(desde.getTime(), hasta.getTime()));		
+		
 	}
 	
 	public void testFuncionalidadEsperada() {
