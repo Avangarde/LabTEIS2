@@ -46,7 +46,26 @@ public class ControlFestivoContarHorasTest extends TestCase {
 	}
 
 	public void testFechasIguales() {
+		ControlFestivo cf = new ControlFestivo();
 		
+		Calendar desde = Calendar.getInstance();
+		Calendar hasta = Calendar.getInstance();
+		desde.getTimeInMillis();
+		desde.getTimeInMillis();
+		
+		//Festivo No Laborable
+		Festivo festivo = produceFestivo(Calendar.JANUARY, 4, false);
+		desde.setTimeInMillis(0);
+		desde.set(Calendar.DATE, 4);
+		hasta = desde;	
+		assertEquals(new Integer(0), cf.contarHoras(desde.getTime(), hasta.getTime()));
+		
+		//Festivo Laborable
+		Festivo festivo1 = produceFestivo(Calendar.JANUARY, 8, true);
+		desde.setTimeInMillis(0);
+		desde.set(Calendar.DATE, 8);
+		hasta = desde;	
+		assertEquals(new Integer(16), cf.contarHoras(desde.getTime(), hasta.getTime()));
 	}
 	
 	public void testFuncionalidadEsperada() {
