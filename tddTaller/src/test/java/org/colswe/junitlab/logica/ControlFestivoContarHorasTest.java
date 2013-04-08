@@ -66,7 +66,7 @@ public class ControlFestivoContarHorasTest extends TestCase {
 		festivos.add(sabadoFestivoNoLab);
 		
 		//Día Domingo Festivo Laborable
-		Festivo domingoFestivoLab = produceFestivo(2012, Calendar.JANUARY, 1, false);
+		Festivo domingoFestivoLab = produceFestivo(2012, Calendar.JANUARY, 1, true);
 		festivos.add(domingoFestivoLab);
 		
 		ControlFestivo cf = new ControlFestivo();
