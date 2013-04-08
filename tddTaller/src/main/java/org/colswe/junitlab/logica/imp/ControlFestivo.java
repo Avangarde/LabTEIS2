@@ -15,8 +15,16 @@ public class ControlFestivo implements IControlFestivo {
 	public Sistema sistema = Sistema.getInstance();
 
 	public Integer contarHoras(Date desde, Date hasta) {
-		// TODO Auto-generated method stub
-		return null;
+		Integer horas = null;
+		if (fechasValidas(desde, hasta)){
+			horas = new Integer(0);
+			Map<TipoDia, Integer> ret = obtenerDias(desde, hasta);
+			horas += ret.get(TipoDia.FESTIVO_LABORA) * 16;
+			horas += ret.get(TipoDia.FESTIVO_NO_LABORAL) * 0;
+			horas += ret.get(TipoDia.NORMAL) * 8;
+			horas += ret.get(TipoDia.SABADO) * 4;
+		}
+		return horas;
 	}
 
 	public Integer contarHoras(Map<TipoDia, Integer> info) {
@@ -28,13 +36,13 @@ public class ControlFestivo implements IControlFestivo {
 		if (desde==null || hasta==null){
 			return false;
 		}
-		return desde.before(hasta);
+		return desde.before(hasta) || desde.equals(hasta);
 	}
 
 	/**
-	 * Retorna el mapa con los días separados por tipo
-	 * @param desde día inicial inclusive
-	 * @param hasta día final inclusive
+	 * Retorna el mapa con los dï¿½as separados por tipo
+	 * @param desde dï¿½a inicial inclusive
+	 * @param hasta dï¿½a final inclusive
 	 */
 	public Map<TipoDia, Integer> obtenerDias(Date desde, Date hasta) {
 		HashMap<TipoDia, Integer> ret = new HashMap<TipoDia, Integer>();
